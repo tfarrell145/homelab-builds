@@ -7,7 +7,7 @@ folder is one project with its own guide; the longer story behind most of them i
 | Project | What it is | Write-up |
 |---|---|---|
 | [family-hub](family-hub/) | A kitchen e-ink calendar fed by the family's Apple or Google calendars, through Home Assistant and Timeframe. Setup guides, Home Assistant helpers, and a generator for school runs and other recurring kid logistics | coming |
-| [tradweather](tradweather/) | A personal weather page for an Ambient Weather station that calibrates public forecast models against your own station's history, so the forecast describes your yard instead of the nearest town. Docker, standard-library Python, five themes | coming |
+| [tradweather](tradweather/) | A personal weather page for an Ambient Weather station that calibrates public forecast models against your own station's history, so the forecast describes your yard instead of the nearest town. Docker, standard-library Python, five themes | [Weather apps suck, so I built my own](https://timjfarrell.com/homelab/weather-apps-suck/) |
 
 ## Using these with Claude
 

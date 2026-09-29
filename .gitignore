@@ -1,0 +1,5 @@
+rides.json
+rides.ics
+__pycache__/
+.DS_Store
+ha/f1_rounds_*.json

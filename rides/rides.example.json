@@ -1,0 +1,59 @@
+{
+  "timezone": "America/New_York",
+  "through": "2027-06-30",
+
+  "target_calendar": "Unassigned",
+  "assigned_calendars": ["Parent A", "Parent B"],
+  "horizon_days": 28,
+
+  "holidays": [
+    "2026-11-26", "2026-11-27",
+    "2026-12-24", "2026-12-25",
+    "2027-01-01"
+  ],
+
+  "school": {
+    "ics": "webcal://example.org/school-calendar.ics",
+    "calendars": ["School 26-27"],
+    "no_school_keywords": ["No School"],
+    "early_release_keywords": ["Early Release"],
+    "no_school_dates": [],
+    "early_release_dates": []
+  },
+
+  "series": [
+    {
+      "title": "School AM",
+      "from": "2026-09-08",
+      "until": "2027-06-11",
+      "days": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+      "start": "07:30",
+      "end": "08:00",
+      "school_days_only": true
+    },
+    {
+      "title": "School PM",
+      "from": "2026-09-08",
+      "until": "2027-06-11",
+      "days": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+      "start": "15:00",
+      "end": "15:30",
+      "school_days_only": true,
+      "early_release": { "start": "12:00", "end": "12:30" }
+    },
+    {
+      "title": "Sam Soccer",
+      "from": "2026-09-14",
+      "until": "2026-11-15",
+      "days": ["Mon", "Wed"],
+      "start": "16:30",
+      "end": "17:30"
+    },
+    {
+      "title": "Daycare AM",
+      "days": ["Tue", "Wed", "Thu", "Fri"],
+      "start": "07:00",
+      "end": "07:30"
+    }
+  ]
+}

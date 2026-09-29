@@ -1,0 +1,26 @@
+# F1 races-only calendar for the display. See docs/05-optional-extras.md.
+#
+# shell_command merges into configuration.yaml (new top-level key, needs a full HA restart).
+# The automation goes in through the UI (Settings -> Automations -> Edit in YAML).
+
+shell_command:
+  f1_timeframe: python3 /config/family-hub/f1_timeframe.py --feed "PASTE_YOUR_ECAL_LINK"
+
+# automation:
+- id: f1_races_calendar_refresh
+  alias: F1 races calendar - refresh
+  description: Rebuild /local/f1_timeframe.ics from the ecal feed, then reload the calendar
+  mode: single
+  triggers:
+    - trigger: time
+      at: "04:10:00"
+    - trigger: homeassistant
+      event: start
+  actions:
+    - action: shell_command.f1_timeframe
+      response_variable: result
+    - condition: template
+      value_template: "{{ result.returncode == 0 }}"
+    - action: homeassistant.reload_config_entry
+      target:
+        entity_id: calendar.formula_1_races

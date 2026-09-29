@@ -1,0 +1,92 @@
+# Kitchen E1003 battery → Home Assistant → Timeframe top-right + low-battery push
+#
+# The E1003 reports battery on every poll and Timeframe stores it, but the
+# add-on does not draw it on the panel and publishes nothing to HA. The one
+# place it surfaces is the device settings page, which the add-on serves
+# without a login. This reads that page and pulls out the icon and the
+# percentage Timeframe already computed.
+#
+# Two values to fill in in the URL: BOX-IP, and DEVICE_ID. Open the screen's
+# Settings in Timeframe (http://BOX-IP:8099) and copy the number after
+# /devices/ from the address bar. Deleting and re-adding the device in
+# Timeframe gives it a new id; Reconnect keeps it. If the level goes
+# `unknown`, check the id first.
+#
+# The page shows the last reported level, so a dead or offline panel holds
+# its final number here. Nothing below detects that.
+#
+# Back up configuration.yaml first. Three parts, pasted inline:
+#   1. the REST part     -> a top-level `rest:` key in configuration.yaml
+#   2. the TEMPLATE part -> the `template:` -> `- sensor:` list (6-space items)
+#   3. the AUTOMATION    -> automations.yaml
+
+# ═════════════════════════════════════════════
+# REST part: top-level `rest:` in configuration.yaml
+# ═════════════════════════════════════════════
+rest:
+  - resource: "http://BOX-IP:8099/accounts/1/locations/1/devices/DEVICE_ID/settings"
+    # The panel reports every 900 s by day, ~3540 s overnight. Polling faster
+    # only re-reads the same number.
+    scan_interval: 300
+    sensor:
+      - name: kitchen_eink_battery
+        unique_id: kitchen_eink_battery
+        device_class: battery
+        unit_of_measurement: "%"
+        state_class: measurement
+        value_template: >
+          {% set m = value | regex_findall('title="Battery">\s*<i class="mdi mdi-[a-z0-9-]+"></i>\s*(\d+)%') %}
+          {{ m[0] | int if m else none }}
+      # Timeframe's own glyph: battery-NN in 10% steps, battery-charging-NN,
+      # battery-outline under 10%. Also the only charging signal HA gets.
+      - name: kitchen_eink_battery_icon
+        unique_id: kitchen_eink_battery_icon
+        value_template: >
+          {% set m = value | regex_findall('title="Battery">\s*<i class="mdi mdi-([a-z0-9-]+)"></i>') %}
+          {{ m[0] if m else none }}
+
+# ═════════════════════════════════════════════
+# TEMPLATE part: items for `template:` -> `- sensor:`
+# ═════════════════════════════════════════════
+      # Kitchen E1003 battery in the top-right status slot. Empty (renders nothing)
+      # when the level is unknown, so a broken scrape never draws a bogus badge.
+      - name: timeframe_top_right_battery
+        unique_id: timeframe_top_right_battery
+        state: >
+          {% set l = states('sensor.kitchen_eink_battery') %}
+          {% set i = states('sensor.kitchen_eink_battery_icon') %}
+          {% if is_number(l) and i.startswith('battery') %}{{ i }},{{ l | int }}%{% endif %}
+
+# ═════════════════════════════════════════════
+# AUTOMATION part: append to automations.yaml
+# ═════════════════════════════════════════════
+# 25% is where Timeframe starts calling the battery low. Below 10%
+# Timeframe replaces the calendar with a
+# full-screen recharge reminder, so that one is time-sensitive.
+- id: kitchen_eink_battery_low
+  alias: Kitchen e-ink - battery low
+  description: E1003 battery via the Timeframe settings page
+  triggers:
+  - trigger: numeric_state
+    entity_id: sensor.kitchen_eink_battery
+    below: 25
+    id: low
+  - trigger: numeric_state
+    entity_id: sensor.kitchen_eink_battery
+    below: 10
+    id: critical
+  conditions:
+  - condition: template
+    value_template: "{{ 'charging' not in states('sensor.kitchen_eink_battery_icon') }}"
+  actions:
+  - action: notify.mobile_app_REPLACE
+    data:
+      title: Kitchen calendar battery {{ states('sensor.kitchen_eink_battery') }}%
+      message: >
+        {% if trigger.id == 'critical' %}Under 10%: the panel now shows a recharge
+        screen instead of the calendar. Plug it in.{% else %}Charge it in the next
+        few days. At 10% the calendar is replaced by a recharge screen.{% endif %}
+      data:
+        push:
+          interruption-level: "{{ 'time-sensitive' if trigger.id == 'critical' else 'active' }}"
+  mode: single

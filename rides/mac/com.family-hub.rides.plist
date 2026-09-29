@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Daily at 05:00. If the Mac is asleep then, launchd runs it at next wake. -->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.family-hub.rides</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/YOUR_USER/.local/bin/family-rides</string>
+    <string>--config</string>
+    <string>/Users/YOUR_USER/family-hub/rides/rides.json</string>
+  </array>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>5</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>/Users/YOUR_USER/Library/Logs/family-rides.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/YOUR_USER/Library/Logs/family-rides.log</string>
+</dict>
+</plist>

@@ -2,7 +2,7 @@
 
 Where Family Hub could go beyond a hand-built kit. Nothing here is built. The first two outside
 households (one Apple, one Google, autumn 2026) are the test: every place they get stuck becomes an
-issue on this repo, and those issues decide what comes first.
+issue on this repo (label `family-hub`), and those issues decide what comes first.
 
 ## Is Home Assistant needed?
 

@@ -58,4 +58,4 @@ Both read the same `rides.json`; schema in `docs/03-recurring-events.md`. When f
 ## When something is not covered
 
 Say so. The builder (Tim) can reach the box over Tailscale if the household shared it. Report a gap
-in the guides as an issue on the repo.
+in the guides as an issue on the repo, with the `family-hub` label.

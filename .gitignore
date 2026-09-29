@@ -1,5 +1,7 @@
-rides.json
-rides.ics
+family-hub/rides.json
+family-hub/rides.ics
 __pycache__/
 .DS_Store
-ha/f1_rounds_*.json
+family-hub/ha/f1_rounds_*.json
+rides.json
+rides.ics

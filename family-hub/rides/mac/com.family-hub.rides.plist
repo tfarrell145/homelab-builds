@@ -9,7 +9,7 @@
   <array>
     <string>/Users/YOUR_USER/.local/bin/family-rides</string>
     <string>--config</string>
-    <string>/Users/YOUR_USER/family-hub/rides/rides.json</string>
+    <string>/Users/YOUR_USER/homelab-builds/family-hub/rides/rides.json</string>
   </array>
   <key>StartCalendarInterval</key>
   <dict>

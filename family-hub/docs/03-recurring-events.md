@@ -16,7 +16,7 @@ about 650 events for a school year.
 
 ## 1. Describe your rides: `rides.json`
 
-Copy [../rides/rides.example.json](../rides/rides.example.json) to `rides.json` in the repo folder
+Copy [../rides/rides.example.json](../rides/rides.example.json) to `rides.json` in the `family-hub` folder
 (`cp rides/rides.example.json rides.json`) and edit that. Ask Claude to fill it in from
 a plain description ("Sam has soccer Monday and Wednesday 4:30 to 5:30 until mid-November...").
 
@@ -107,7 +107,7 @@ Needs a Mac that is on (or wakes) most mornings, Xcode Command Line Tools
 (`xcode-select --install`), and the Mac's Calendar app signed in to the family's iCloud.
 
 ```bash
-cd family-hub/rides/mac
+cd homelab-builds/family-hub/rides/mac
 ./build.sh
 family-rides --config ../rides.json --list-calendars   # grants Calendar access on first run
 family-rides --config ../rides.json --dry-run

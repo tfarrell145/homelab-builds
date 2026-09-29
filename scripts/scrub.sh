@@ -3,7 +3,8 @@
 #
 #   scripts/scrub.sh                       generic checks only
 #   scripts/scrub.sh ~/private-patterns    plus one extended regex per line
-#                                          (names, hostnames, account IDs)
+#                                          (names, hostnames, account IDs);
+#                                          # comments and blank lines ignored
 #
 # The private pattern file lives outside this repo: a list of what must never
 # be published is itself something that must never be published.
@@ -17,7 +18,9 @@ allow='192\.168\.1\.50|100\.x\.y\.z'
 
 hits=$(grep -rnIE "$generic" --exclude-dir=.git --exclude=scrub.sh . | grep -vE "$allow")
 if [ $# -gt 0 ]; then
-  more=$(grep -rnIEif "$1" --exclude-dir=.git --exclude=scrub.sh .)
+  patterns=$(mktemp); trap 'rm -f "$patterns"' EXIT
+  grep -vE '^[[:space:]]*(#|$)' "$1" > "$patterns"
+  more=$(grep -rnIEif "$patterns" --exclude-dir=.git --exclude=scrub.sh .)
   hits=$(printf '%s\n%s' "$hits" "$more" | sed '/^$/d')
 fi
 

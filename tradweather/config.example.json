@@ -1,0 +1,21 @@
+{
+    "provider": "ambient_weather",
+    "api_key": "YOUR_AMBIENT_API_KEY",
+    "application_key": "YOUR_AMBIENT_APPLICATION_KEY",
+    "device_mac": "YOUR_STATION_MAC",
+
+    "station_name": "My Station",
+    "location": "Town, State",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "elevation_ft": 0,
+    "timezone": "America/New_York",
+
+    "contact_email": "you@example.com",
+    "port": 8788,
+
+    "_latlon": "Exact station point, 4+ decimals, from the Ambient app or a map pin. Every forecast and calibration keys off these -- do not guess from the town name.",
+    "_timezone": "IANA name. Timestamps are local to the station, not to the viewer.",
+    "_contact_email": "NWS rejects requests without a User-Agent carrying a real contact. Yours never leaves your config.",
+    "_coverage": "NWS forecasts, alerts, the discussion and NEXRAD radar are United States only. Outside the US the station panels and Open-Meteo charts still work; the NWS sections render empty."
+}

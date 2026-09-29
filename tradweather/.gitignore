@@ -1,0 +1,21 @@
+# Your keys and your station. Never commit these.
+config.json
+
+# Generated output -- the served page, the PWA icons, the machine-readable feed.
+public/
+
+# Your station's own record and everything derived from it.
+history.csv
+history30.json
+calibration.json
+wind_run_dist.json
+monthly_totals.json
+ytd_reference.json
+
+# Caches.
+.archive24_cache.json
+.forecast_cache.json
+.nws_grid_cache.json
+
+__pycache__/
+*.pyc

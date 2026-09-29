@@ -1,0 +1,16 @@
+services:
+  tradweather:
+    build: .
+    container_name: tradweather
+    restart: unless-stopped
+    environment:
+      - PORT=8788
+      # Your station's timezone (IANA name). Used for log timestamps inside the
+      # container; the page itself uses `timezone` from config.json.
+      - TZ=America/New_York
+    ports:
+      - "8788:8788"
+    volumes:
+      # Everything lives here: config.json, the caches, your station's history,
+      # and the generated public/ directory. Only public/ is ever served.
+      - ./:/config

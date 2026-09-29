@@ -11,7 +11,7 @@
 set -u
 cd "$(dirname "$0")/.."
 
-generic='(^|[^0-9])(10\.[0-9]+\.[0-9]+\.[0-9]+|192\.168\.[0-9]+\.[0-9]+|172\.(1[6-9]|2[0-9]|3[01])\.[0-9]+\.[0-9]+|100\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7])\.[0-9]+\.[0-9]+)|[A-Za-z0-9._%+-]+@(gmail|icloud|me|outlook|yahoo)\.com|ghp_[A-Za-z0-9]{20,}|github_pat_|sk-ant-|eyJ[A-Za-z0-9_-]{20,}\.|ts\.net|-----BEGIN [A-Z ]*PRIVATE KEY'
+generic='(^|[^0-9])(10\.[0-9]+\.[0-9]+\.[0-9]+|192\.168\.[0-9]+\.[0-9]+|172\.(1[6-9]|2[0-9]|3[01])\.[0-9]+\.[0-9]+|100\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7])\.[0-9]+\.[0-9]+)|[A-Za-z0-9._%+-]+@(gmail|icloud|me|outlook|yahoo)\.com|ghp_[A-Za-z0-9]{20,}|github_pat_|sk-ant-|eyJ[A-Za-z0-9_-]{20,}\.|[a-z0-9-]+\.[a-z0-9-]+\.ts\.net|-----BEGIN [A-Z ]*PRIVATE KEY'
 
 # Documentation examples that look like private addresses on purpose.
 allow='192\.168\.1\.50|100\.x\.y\.z'

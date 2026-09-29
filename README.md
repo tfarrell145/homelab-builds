@@ -30,6 +30,7 @@ Nothing goes through a cloud service except the calendars themselves.
 | Person | Does | Guide |
 |---|---|---|
 | Builder | Buys the parts, sets up the box and the screen at their place | [docs/00-builder-prebuild.md](docs/00-builder-prebuild.md) |
+| Household building it themselves | Sets up the box and the screen at home (~2 h), then the handoff guide from step 3 | [docs/00-self-build.md](docs/00-self-build.md) |
 | Household, Apple calendars | Plugs it in, connects iCloud, pairs the screen (~45 min) | [docs/01-handoff-apple.md](docs/01-handoff-apple.md) |
 | Household, Google calendars | Same, with Google | [docs/01-handoff-google.md](docs/01-handoff-google.md) |
 | Household | Organises the calendars so the screen reads well | [docs/02-calendar-playbook.md](docs/02-calendar-playbook.md) |

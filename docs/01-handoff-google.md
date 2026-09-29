@@ -108,11 +108,13 @@ Saving settings re-draws the screen within about a minute; press Refresh to fetc
 Lets the Home Assistant app work away from home, and lets the builder help without visiting.
 Nothing on your network is opened to the internet.
 
-1. Home Assistant: Settings -> Add-ons -> **Tailscale** -> Open Web UI -> **Log in**, with the
+1. Home Assistant: Settings -> Add-ons -> **Tailscale** (if it is not there: Add-on Store ->
+   Tailscale -> Install, Start on boot, Start) -> Open Web UI -> **Log in**, with the
    Apple or Google account you want to own this. Save which one in "Family Hub".
 2. At `login.tailscale.com/admin/machines`, `homeassistant` -> ⋯ -> **Disable key expiry**. If you
    skip this, remote access stops without warning after 180 days.
-3. Same page, `homeassistant` -> ⋯ -> **Share** -> send the invite to the builder.
+3. Same page, `homeassistant` -> ⋯ -> **Share** -> send the invite to whoever helps you with it
+   (the builder, if someone built it for you).
 4. Each adult's phone: install **Tailscale**, sign in with the same account (or accept a share),
    leave it on. Install the **Home Assistant** app and log in.
 5. In the Home Assistant app: Settings -> Companion app -> the server -> **External URL**:

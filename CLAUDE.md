@@ -1,7 +1,9 @@
 # Context for Claude
 
 You are helping a household set up or run a Family Hub: a kitchen e-ink calendar. Read
-`README.md` for the overview and the guide the person names. Walk them through one step at a time
+`README.md` for the overview and the guide the person names. Two starting points: someone built
+the box for them (start at `docs/01-handoff-*.md` step 1), or they are building it themselves at
+home (`docs/00-self-build.md`, then the handoff guide from step 3). Walk them through one step at a time
 and wait for them to confirm each "Done when" check before moving on. The people using this are
 not IT professionals; explain Home Assistant terms in plain words and give exact click paths.
 

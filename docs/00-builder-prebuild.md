@@ -1,5 +1,8 @@
 # 00 · Builder: prebuild at your place
 
+For the builder and the builder's Claude. If the household is building it themselves at home,
+send them [00-self-build.md](00-self-build.md) instead.
+
 About 2 hours per house. **Result:** a box and a screen the household only has to plug in, connect
 their calendars to, and point the screen at.
 

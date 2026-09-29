@@ -43,6 +43,9 @@ Every guide is written so a Claude session can walk you through it. Point Claude
 (`https://github.com/tfarrell145/family-hub`) and say which guide you are on. [CLAUDE.md](CLAUDE.md)
 gives it the background and the handful of mistakes that cost real time in the reference house.
 
+Households set up by the builder also get a shared read-along page with the same steps in order;
+this repo is what Claude reads.
+
 ## Parts
 
 | Part | Price (2026) | Notes |

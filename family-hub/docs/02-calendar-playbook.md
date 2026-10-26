@@ -38,7 +38,22 @@ through `mdi:alpha-z` are the letters; there are circled and boxed versions too
 | All-day (meals, school days off, birthdays) | left, under the day's date |
 | Timed | right, in time order |
 
-To move something to the left column, make it all-day.
+To move something to the left column, make it all-day:
+
+| On | Make an event all-day |
+|---|---|
+| iPhone | open the event -> Edit -> turn on **All-day** -> Done |
+| Mac | double-click the event -> tick **all-day** |
+| Google | open the event -> edit -> tick **All day** -> Save |
+
+All-day events keep their calendar's icon, so a `Family Events` all-day shows the house and a
+`Meals` event shows the fork and knife.
+
+The left column is short. More than about three all-day items on one day crowds it; move the less
+important ones to a time or leave them off.
+
+Multi-day all-day events (a trip, a week of camp) are untested in the reference house. Expect them
+on each day they cover, and check the first one you add.
 
 ### Titles
 
@@ -46,6 +61,16 @@ To move something to the left column, make it all-day.
 - Keep them short; long titles wrap and push later days off the screen.
 - No initials in the title (`A - Dentist`). The icon already says whose it is; the reference house
   used prefixes before switching to icons and dropped them.
+
+### Set each phone's default calendar
+
+So new events land on the right calendar without thinking:
+
+| On | Set it |
+|---|---|
+| iPhone | Settings -> Apps -> Calendar -> **Default Calendar** -> your own |
+| Mac | Calendar -> Settings -> General -> **Default calendar** |
+| Google | no reliable default setting; pick the calendar in the event editor each time |
 
 ## The Unassigned calendar: how kid logistics get claimed
 
@@ -61,9 +86,29 @@ driver.
 | Google Calendar (web) | open the event -> edit (pencil) -> calendar dropdown under the title -> Save |
 | Google Calendar (phone) | open the event -> edit -> tap the calendar name -> pick -> Save |
 
+| Situation | Do |
+|---|---|
+| Ride not needed (closure, sick day) | delete it. The generator never recreates a ride you deleted |
+| Ride at a different time | edit it. It stays moved |
+| One-off ride (a party drop-off) | create it straight on the driver's calendar |
+| New recurring activity | add it to `rides.json` ([03-recurring-events.md](03-recurring-events.md)) |
+
+Never create a repeating event on `Unassigned`. Repeating events are fine on the parent, Family
+Events and Meals calendars.
+
 This only works because each ride is its own event. Apple Calendar moves a **whole repeating series**
 when you change one occurrence's calendar, which is why the rides are generated as separate
 events rather than as one repeating event.
+
+## How fast changes reach the screen
+
+| Change made | On the screen |
+|---|---|
+| Daytime (05:00-23:00) | about 1-16 minutes |
+| Overnight | up to about an hour |
+
+The screen wakes every 15 minutes (hourly overnight) to save battery. `http://BOX-IP:8099` shows
+the next image as soon as Timeframe has the change.
 
 ## School calendar
 
